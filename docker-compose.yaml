@@ -1,0 +1,23 @@
+services:
+  postgres-db:
+    image: postgres:14-alpine # Or your chosen version
+    container_name: banking-postgres-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: banking_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d banking_db"] # Ensure this uses 'admin'
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+# ... other services if any ...
+
+volumes:
+  postgres_data: {} # This defines the named volume 'postgres_data'
