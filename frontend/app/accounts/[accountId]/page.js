@@ -28,7 +28,7 @@ async function getAccountData(accountId) {
 }
 
 export default async function AccountDetailsPage({ params }) {
-    const { accountId } = params;
+    const { accountId } = await params;
     const { account, transactions, error } = await getAccountData(accountId);
 
     if (error) return <p className="text-center mt-10 text-red-500">Error: {error}</p>;
@@ -37,8 +37,8 @@ export default async function AccountDetailsPage({ params }) {
     return (
         <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-                <header className="mb-8">
-                    <Link href="/" className="text-blue-600 hover:text-blue-800">&larr; Back to Home</Link>
+                <header>
+                    <Link href="/accounts" className="text-blue-600 hover:text-blue-800">&larr; Back to Accounts</Link>
                     <h1 className="mt-4 text-3xl font-bold text-white">Account Details</h1>
                 </header>
 

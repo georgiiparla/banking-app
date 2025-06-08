@@ -23,6 +23,12 @@ public class AccountController {
 		return new ResponseEntity<>(account, HttpStatus.CREATED);
 	}
 
+	@GetMapping
+	public ResponseEntity<List<BankAccount>> getAllAccounts() {
+		List<BankAccount> accounts = accountService.getAllAccounts();
+		return ResponseEntity.ok(accounts);
+	}
+
 	@GetMapping("/{accountId}")
 	public ResponseEntity<BankAccount> getAccountDetails(@PathVariable Integer accountId) {
 		BankAccount account = accountService.getAccountDetails(accountId);

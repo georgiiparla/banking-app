@@ -105,4 +105,8 @@ public class AccountService {
 				.orElseThrow(() -> new RuntimeException("Account not found with id: " + accountId));
 		return transactionRepository.findByBankAccountCustomerIdOrderByTransactionTimestampDesc(accountId);
 	}
+
+	public List<BankAccount> getAllAccounts() {
+		return bankAccountRepository.findAll();
+	}
 }

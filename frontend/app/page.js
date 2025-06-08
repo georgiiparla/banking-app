@@ -44,7 +44,7 @@ export default async function HomePage() {
             Open New Account
           </Link>
           <Link href="/accounts" className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-150 ease-in-out text-center">
-            View Account
+            View Accounts
           </Link>
           <Link href="/branches/create" className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-150 ease-in-out text-center">
             Create New Branch
@@ -58,7 +58,7 @@ export default async function HomePage() {
               {branches.map((branch) => (
                 <li key={branch.id} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <h3 className="text-xl font-medium text-gray-900">{branch.address}</h3>
-                  <p className="text-gray-600">Cash on Hand: ${branch.cashOnHand?.toFixed(2)}</p>
+                  <p className="text-gray-600">Cash Available: ${branch.cashOnHand?.toFixed(2)}</p>
                   <p className="text-gray-500 text-sm">Branch ID: {branch.id}</p>
                   <Link href={`/branches/${branch.id}/add-teller`} className="mt-2 inline-block text-sm text-blue-500 hover:text-blue-700">
                     Add Teller to Branch {branch.id}
